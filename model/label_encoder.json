@@ -1,0 +1,32 @@
+{
+  "classes": [
+    "assignment_help",
+    "campus",
+    "casual_conversation",
+    "clubs",
+    "coding_practice",
+    "entertainment",
+    "events",
+    "exam_preparation",
+    "exam_stress",
+    "food_query",
+    "general_greeting",
+    "general_knowledge",
+    "goodbye",
+    "internship",
+    "interview",
+    "joke_request",
+    "library",
+    "motivation",
+    "productivity",
+    "programming",
+    "resume",
+    "science",
+    "study_help",
+    "study_plan",
+    "technology",
+    "thanks",
+    "weather"
+  ],
+  "max_len": 15
+}

@@ -1,0 +1,237 @@
+{
+  "intents": [
+    {
+      "tag": "general_greeting",
+      "category": "Social & Basic",
+      "patterns": [
+        "Hello", "Hi", "Hey", "Good morning", "Good afternoon", "Good evening", 
+        "Hey VocaSense", "Hello assistant", "Hi there", "Greetings", "Howdy", 
+        "What's up", "Hey there AI", "Hello VocaSense how are you", "Hi bot", 
+        "Are you there", "Hello friend", "Good day", "Hey buddy", "Hi assistant", 
+        "Hello system", "Wake up VocaSense", "Yo assistant", "Hi can you help me", 
+        "Hello I need some help", "Hey assistant are you online", "Hi good morning VocaSense"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "category": "Social & Basic",
+      "patterns": [
+        "Goodbye", "Bye", "See you later", "Exit", "Quit", "Have a good day", 
+        "Catch you later", "I am leaving now", "Bye bye VocaSense", "Talk to you later", 
+        "Good night", "End session", "Close assistant", "I am done", "See ya", 
+        "Farewell", "Stopping for now", "Shut down", "Log off", "Bye assistant thanks"
+      ]
+    },
+    {
+      "tag": "thanks",
+      "category": "Social & Basic",
+      "patterns": [
+        "Thank you", "Thanks", "Thanks a lot", "I appreciate it", "Thank you so much", 
+        "Thanks for the help", "Appreciate your assistance", "Many thanks", "That was helpful", 
+        "Awesome thanks", "Great thank you VocaSense", "Thanks assistant", "Very helpful thanks", 
+        "Thank you very much", "Super helpful thanks", "You saved me thanks"
+      ]
+    },
+    {
+      "tag": "casual_conversation",
+      "category": "Social & Basic",
+      "patterns": [
+        "How are you doing today", "What's on your mind", "Are you having a good day",
+        "Tell me something interesting about yourself", "I am bored", "What should I do right now",
+        "Let's chat", "Can we talk about anything", "How is life as an AI", "Do you like talking to humans"
+      ]
+    },
+    {
+      "tag": "joke_request",
+      "category": "Entertainment & Fun",
+      "patterns": [
+        "Tell me a joke", "Say something funny", "Make me laugh", "Do you know any jokes",
+        "Tell me a programming joke", "Tell me a science joke", "Got any funny stories",
+        "Cheer me up with a joke", "Tell me a pun"
+      ]
+    },
+    {
+      "tag": "food_query",
+      "category": "Lifestyle & Food",
+      "patterns": [
+        "I'm hungry", "What should I eat", "Give me food recommendations", "Where can I get lunch",
+        "Suggest a quick dinner recipe", "What is good comfort food", "Any healthy snack ideas",
+        "I need a breakfast suggestion", "What can I cook in 15 minutes"
+      ]
+    },
+    {
+      "tag": "entertainment",
+      "category": "Entertainment & Fun",
+      "patterns": [
+        "Recommend a good movie", "What should I watch tonight", "Suggest a good book to read",
+        "What are top video games to play", "Recommend a podcast", "What music should I listen to",
+        "Give me TV show recommendations"
+      ]
+    },
+    {
+      "tag": "weather",
+      "category": "Environment",
+      "patterns": [
+        "Will it rain today", "What is the weather forecast", "Is it hot outside",
+        "Should I wear a jacket", "What's the temperature", "Is it sunny or cloudy today"
+      ]
+    },
+    {
+      "tag": "general_knowledge",
+      "category": "Knowledge & Inquiry",
+      "patterns": [
+        "What is the capital of France", "Who was Albert Einstein", "How far is the moon",
+        "Explain the solar system", "What are world wonders", "Tell me about world history",
+        "Who wrote Hamlet", "What is photosynthesis", "Explain gravity"
+      ]
+    },
+    {
+      "tag": "science",
+      "category": "Knowledge & Inquiry",
+      "patterns": [
+        "Explain quantum computing", "What is quantum physics", "How do black holes work",
+        "What is DNA and RNA", "How does renewable energy work", "Explain nuclear fusion",
+        "What is the theory of relativity", "How do volcanoes erupt"
+      ]
+    },
+    {
+      "tag": "technology",
+      "category": "Technology & Computing",
+      "patterns": [
+        "What is cloud computing", "Explain artificial intelligence", "What is Docker",
+        "What is blockchain", "Explain cybersecurity basics", "What is microservices architecture",
+        "What is the difference between TCP and UDP", "Explain IoT"
+      ]
+    },
+    {
+      "tag": "programming",
+      "category": "Technology & Computing",
+      "patterns": [
+        "Write a Python program for sorting", "Write code to reverse a linked list",
+        "How to use async await in JavaScript", "What is recursion", "Explain recursion like I'm five",
+        "What is object oriented programming", "How to write a REST API in Python"
+      ]
+    },
+    {
+      "tag": "coding_practice",
+      "category": "Technology & Computing",
+      "patterns": [
+        "Give me coding practice problems", "How to practice data structures and algorithms",
+        "Tips for clearing LeetCode questions", "How to improve problem solving skills in coding",
+        "Practice coding exercises"
+      ]
+    },
+    {
+      "tag": "study_help",
+      "category": "Academic & Education",
+      "patterns": [
+        "How can I study effectively", "Give me active recall tips", "How to memorize concepts fast",
+        "How to stay focused while studying", "What is space repetition studying", "How to organize lecture notes"
+      ]
+    },
+    {
+      "tag": "study_plan",
+      "category": "Academic & Education",
+      "patterns": [
+        "Make me a study timetable", "Help me create a daily study schedule", "How to structure my revision plan",
+        "Design a 7 day study planner", "Help me plan my study sessions"
+      ]
+    },
+    {
+      "tag": "exam_preparation",
+      "category": "Academic & Education",
+      "patterns": [
+        "How to prepare for upcoming exams", "Best techniques for finals revision", "How to revise heavy syllabus fast",
+        "Tips for exam week preparation", "How to review past papers"
+      ]
+    },
+    {
+      "tag": "assignment_help",
+      "category": "Academic & Education",
+      "patterns": [
+        "Help me structure my essay", "How to write a research paper", "Tips for academic writing",
+        "Help me brainstorm assignment ideas", "How to write project reports"
+      ]
+    },
+    {
+      "tag": "productivity",
+      "category": "Personal Growth",
+      "patterns": [
+        "How to stop procrastinating", "How to manage my time better", "What is the Pomodoro technique",
+        "Tips for daily task organization", "How to build good habits"
+      ]
+    },
+    {
+      "tag": "motivation",
+      "category": "Personal Growth",
+      "patterns": [
+        "Give me a motivational quote", "I am feeling uninspired", "Inspire me to work hard",
+        "Give me words of encouragement", "I feel demotivated"
+      ]
+    },
+    {
+      "tag": "exam_stress",
+      "category": "Academic & Well-being",
+      "patterns": [
+        "I am stressed about my exam", "I have an exam tomorrow and haven't studied anything",
+        "I am panicking about test grades", "How to manage exam anxiety", "Feeling overwhelmed by syllabus"
+      ]
+    },
+    {
+      "tag": "campus",
+      "category": "Campus Logistics",
+      "patterns": [
+        "Where is the main auditorium", "How do I reach block B", "Where is the dean office",
+        "Directions to administrative building", "Where is the student lounge"
+      ]
+    },
+    {
+      "tag": "library",
+      "category": "Campus Logistics",
+      "patterns": [
+        "Where is the central library", "What are library opening hours", "Is the library open on weekends",
+        "How to borrow books from library", "Where is quiet study area"
+      ]
+    },
+    {
+      "tag": "events",
+      "category": "Campus Life",
+      "patterns": [
+        "What are upcoming campus events", "When is the college tech fest", "Are there any hackathons this month",
+        "Tell me about cultural fest", "When is the coding competition"
+      ]
+    },
+    {
+      "tag": "clubs",
+      "category": "Campus Life",
+      "patterns": [
+        "What student clubs are on campus", "How to join coding club", "Tell me about robotics club",
+        "Where is the music club", "How to register for student societies"
+      ]
+    },
+    {
+      "tag": "internship",
+      "category": "Career & Growth",
+      "patterns": [
+        "How to apply for internships", "Where to find software internships", "When do summer internship drives start",
+        "Tips for getting technical internships", "Paid internship opportunities"
+      ]
+    },
+    {
+      "tag": "resume",
+      "category": "Career & Growth",
+      "patterns": [
+        "How to build a good resume", "What to put on resume for tech jobs", "Help me format my resume",
+        "Resume tips for college students", "How to write bullet points for resume"
+      ]
+    },
+    {
+      "tag": "interview",
+      "category": "Career & Growth",
+      "patterns": [
+        "How to prepare for an interview", "Tips for clearing technical interview", "Common HR interview questions",
+        "What is the STAR method for interviews", "Help me prepare for job interview"
+      ]
+    }
+  ]
+}

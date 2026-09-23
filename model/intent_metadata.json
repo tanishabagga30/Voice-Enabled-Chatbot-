@@ -1,0 +1,164 @@
+{
+  "general_greeting": {
+    "category": "Social & Basic",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "goodbye": {
+    "category": "Social & Basic",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "thanks": {
+    "category": "Social & Basic",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "casual_conversation": {
+    "category": "Social & Basic",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "joke_request": {
+    "category": "Entertainment & Fun",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "food_query": {
+    "category": "Lifestyle & Food",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "entertainment": {
+    "category": "Entertainment & Fun",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "weather": {
+    "category": "Environment",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "general_knowledge": {
+    "category": "Knowledge & Inquiry",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "science": {
+    "category": "Knowledge & Inquiry",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "technology": {
+    "category": "Technology & Computing",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "programming": {
+    "category": "Technology & Computing",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "coding_practice": {
+    "category": "Technology & Computing",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "study_help": {
+    "category": "Academic & Education",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "study_plan": {
+    "category": "Academic & Education",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "exam_preparation": {
+    "category": "Academic & Education",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "assignment_help": {
+    "category": "Academic & Education",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "productivity": {
+    "category": "Personal Growth",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "motivation": {
+    "category": "Personal Growth",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "exam_stress": {
+    "category": "Academic & Well-being",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "campus": {
+    "category": "Campus Logistics",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "library": {
+    "category": "Campus Logistics",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "events": {
+    "category": "Campus Life",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "clubs": {
+    "category": "Campus Life",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "internship": {
+    "category": "Career & Growth",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "resume": {
+    "category": "Career & Growth",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  },
+  "interview": {
+    "category": "Career & Growth",
+    "responses": [],
+    "suggested_action": "Explore available topics.",
+    "entity": "general"
+  }
+}

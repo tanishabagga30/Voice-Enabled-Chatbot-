@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VocaSense — Voice-Aware Hybrid AI Assistant</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Pastel Iridescent Ambient Mesh Background -->
+    <div class="aurora-background">
+        <div class="aurora-blob blob-lavender"></div>
+        <div class="aurora-blob blob-peach"></div>
+        <div class="aurora-blob blob-mint"></div>
+    </div>
+
+    <!-- Main Outer Layout Container -->
+    <div class="app-layout">
+        <!-- TOP HEADER NAVBAR -->
+        <header class="app-header">
+            <div class="header-brand">
+                <div class="user-avatar-pill" id="avatarHomeBtn" title="Click to go to Home Screen">
+                    <span class="avatar-icon"><i class="fa-solid fa-brain"></i></span>
+                    <div class="avatar-text">
+                        <span class="greeting-user">VocaSense AI</span>
+                        <span class="welcome-tag">Hybrid Assistant</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <button id="homeBtn" class="btn-pastel-pill" title="Return to Home Screen">
+                    <i class="fa-solid fa-house"></i> Home
+                </button>
+                <button id="toggleAnalyticsBtn" class="btn-pastel-pill" title="Toggle AI Analytics Drawer">
+                    <i class="fa-solid fa-chart-line"></i> AI Analysis <i class="fa-solid fa-chevron-down" id="analyticsChevron"></i>
+                </button>
+                <button id="ttsToggleBtn" class="btn-icon-pastel" title="Toggle Voice Output (TTS)">
+                    <i class="fa-solid fa-volume-high"></i>
+                </button>
+                <button id="themeToggleBtn" class="btn-icon-pastel" title="Toggle Dark/Light Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button id="techBadgeBtn" class="tech-badge-pastel-btn" title="View Tech Stack Details">
+                    <i class="fa-solid fa-bolt"></i> BiLSTM + Grok AI
+                </button>
+            </div>
+        </header>
+
+        <!-- COLLAPSIBLE AI ANALYSIS DRAWER (DEFAULT CLOSED) -->
+        <aside id="analyticsDrawer" class="analytics-drawer collapsed">
+            <div class="drawer-content-card">
+                <div class="drawer-header-row">
+                    <h3><i class="fa-solid fa-chart-pie"></i> Voice Analysis & AI Pipeline</h3>
+                    <span class="drawer-badge">Deep Learning Metrics</span>
+                </div>
+
+                <div class="analysis-stats-row">
+                    <div class="stat-pill">
+                        <span class="stat-num" id="statMessages">0</span>
+                        <span class="stat-lbl">Total Queries</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="stat-num" id="statVoiceInputs">0</span>
+                        <span class="stat-lbl">Voice Inputs</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="stat-num" id="statTopIntent">—</span>
+                        <span class="stat-lbl">Top Intent</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="stat-num" id="statAvgConf">0.0%</span>
+                        <span class="stat-lbl">Avg Confidence</span>
+                    </div>
+                </div>
+
+                <!-- Latest Request Metadata -->
+                <div class="latest-analysis-box" id="latestAnalysisBox">
+                    <div class="meta-item"><span class="meta-lbl">Intent:</span> <strong id="metaIntent">—</strong></div>
+                    <div class="meta-item"><span class="meta-lbl">Confidence:</span> <strong id="metaConf">—</strong></div>
+                    <div class="meta-item"><span class="meta-lbl">Model:</span> <strong>BiLSTM (Keras)</strong></div>
+                    <div class="meta-item"><span class="meta-lbl">Generative AI:</span> <strong id="metaGrok">Grok AI</strong></div>
+                    <div class="meta-item"><span class="meta-lbl">Request ID:</span> <code id="metaReqId">—</code></div>
+                </div>
+
+                <!-- Live Timing Timeline -->
+                <div class="timeline-box">
+                    <div class="timeline-header"><i class="fa-solid fa-timeline"></i> Processing Timeline</div>
+                    <div class="timeline-rows" id="drawerTimelineRows">
+                        <div class="timeline-row"><span class="t-dot status-idle"><i class="fa-solid fa-circle"></i></span> <span class="t-name">Speech Recognition</span> <span class="t-val" id="tTimeSTT">Not used</span></div>
+                        <div class="timeline-row"><span class="t-dot status-idle"><i class="fa-solid fa-circle"></i></span> <span class="t-name">BiLSTM Classification</span> <span class="t-val" id="tTimeML">—</span></div>
+                        <div class="timeline-row"><span class="t-dot status-idle"><i class="fa-solid fa-circle"></i></span> <span class="t-name">Grok Generation</span> <span class="t-val" id="tTimeGrok">—</span></div>
+                        <div class="timeline-row"><span class="t-dot status-idle"><i class="fa-solid fa-circle"></i></span> <span class="t-name">Total Backend</span> <span class="t-val" id="tTimeTotal">—</span></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CHAT CONTAINER (PRIMARY VIEW) -->
+        <main class="main-chat-container">
+            <!-- Active Chat History & Catchy Welcome State -->
+            <div class="chat-viewport" id="chatViewport">
+                <div class="chat-messages-wrapper" id="chatMessages">
+                    <!-- Catchy Welcome Screen (Pastel Smart Home Aesthetic) -->
+                    <div class="welcome-card" id="welcomeCard">
+                        <div class="hero-greeting-block">
+                            <div class="brand-badge-pill"><i class="fa-solid fa-wand-magic-sparkles"></i> HYBRID AI SYSTEM</div>
+                            <h1 class="welcome-headline">VocaSense — Voice-Aware Hybrid AI Assistant</h1>
+                            <p class="welcome-subtext">Speak naturally. Ask anything.</p>
+                        </div>
+
+                        <!-- Top Feature Cards Grid -->
+                        <div class="hero-feature-grid">
+                            <!-- Card 1: Main Assistant -->
+                            <div class="feature-card main-feature-card">
+                                <div class="fc-icon"><i class="fa-solid fa-microphone-lines"></i></div>
+                                <h3>Talk to VocaSense</h3>
+                                <p>Speak naturally or type your prompt to get instant AI answers.</p>
+                                <button class="btn-violet-start" id="startTalkingBtn">
+                                    <i class="fa-solid fa-microphone"></i> Start Talking
+                                </button>
+                            </div>
+
+                            <!-- Card 2 & 3: Quick Modules -->
+                            <div class="feature-card-column">
+                                <div class="feature-card sub-feature-card" id="quickVoiceCard">
+                                    <div class="fc-row">
+                                        <div class="fc-icon-sm"><i class="fa-solid fa-waveform"></i></div>
+                                        <div>
+                                            <h4>Voice Interaction</h4>
+                                            <span>Real-Time Web Speech STT</span>
+                                        </div>
+                                        <i class="fa-solid fa-arrow-right fc-arrow"></i>
+                                    </div>
+                                </div>
+                                <div class="feature-card sub-feature-card" id="quickGrokCard">
+                                    <div class="fc-row">
+                                        <div class="fc-icon-sm"><i class="fa-solid fa-brain"></i></div>
+                                        <div>
+                                            <h4>BiLSTM + Grok AI</h4>
+                                            <span>Intent Aware Generative AI</span>
+                                        </div>
+                                        <i class="fa-solid fa-arrow-right fc-arrow"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- HOW IT WORKS PIPELINE SECTION -->
+                        <div class="pipeline-section">
+                            <div class="section-title-sm"><i class="fa-solid fa-route"></i> How It Works</div>
+                            <div class="pipeline-flow">
+                                <div class="flow-step">
+                                    <div class="step-icon"><i class="fa-solid fa-microphone"></i></div>
+                                    <span class="step-label">Voice</span>
+                                </div>
+                                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                                <div class="flow-step">
+                                    <div class="step-icon"><i class="fa-solid fa-ear-listen"></i></div>
+                                    <span class="step-label">Speech Recognition</span>
+                                </div>
+                                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                                <div class="flow-step">
+                                    <div class="step-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                                    <span class="step-label">BiLSTM Intent</span>
+                                </div>
+                                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                                <div class="flow-step">
+                                    <div class="step-icon"><i class="fa-solid fa-brain"></i></div>
+                                    <span class="step-label">Grok AI</span>
+                                </div>
+                                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                                <div class="flow-step">
+                                    <div class="step-icon"><i class="fa-solid fa-comment-dots"></i></div>
+                                    <span class="step-label">Response</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CAPABILITIES SECTION -->
+                        <div class="capabilities-section">
+                            <div class="section-title-sm"><i class="fa-solid fa-sliders"></i> Core Capabilities</div>
+                            <div class="capabilities-grid">
+                                <div class="cap-card">
+                                    <i class="fa-solid fa-waveform"></i>
+                                    <span>Voice Interaction</span>
+                                </div>
+                                <div class="cap-card">
+                                    <i class="fa-solid fa-comments"></i>
+                                    <span>AI Conversation</span>
+                                </div>
+                                <div class="cap-card">
+                                    <i class="fa-solid fa-bullseye"></i>
+                                    <span>Intent Detection</span>
+                                </div>
+                                <div class="cap-card">
+                                    <i class="fa-solid fa-chart-line"></i>
+                                    <span>Real-time Analysis</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Topic Filter Pills & Demo Discovery Cards -->
+                        <div class="topics-section">
+                            <div class="topics-header">
+                                <h3>Topics & Demo Prompts</h3>
+                                <span class="see-all-link">Click any prompt to try</span>
+                            </div>
+                            <div class="topic-chips-row">
+                                <span class="topic-pill active" data-category="all">All</span>
+                                <span class="topic-pill" data-category="daily">Daily Life</span>
+                                <span class="topic-pill" data-category="programming">Programming</span>
+                                <span class="topic-pill" data-category="science">Science & Tech</span>
+                                <span class="topic-pill" data-category="study">Exam Prep</span>
+                            </div>
+                        </div>
+
+                        <!-- DEMO PROMPTS AS DISCOVERY CARDS WITH VECTOR ICONS -->
+                        <div class="demo-cards-grid">
+                            <div class="prompt-chip discover-card" data-category="science" data-prompt="Explain quantum computing simply">
+                                <div class="dc-vector-icon"><i class="fa-solid fa-atom"></i></div>
+                                <h4>What is quantum computing?</h4>
+                                <p>Explain qubits and superposition simply...</p>
+                                <span class="btn-discover">Discover <i class="fa-solid fa-arrow-right"></i></span>
+                            </div>
+
+                            <div class="prompt-chip discover-card" data-category="daily" data-prompt="Tell me a joke">
+                                <div class="dc-vector-icon"><i class="fa-solid fa-face-laugh-beam"></i></div>
+                                <h4>Tell me a joke</h4>
+                                <p>Lighthearted programming humor...</p>
+                                <span class="btn-discover">Discover <i class="fa-solid fa-arrow-right"></i></span>
+                            </div>
+
+                            <div class="prompt-chip discover-card" data-category="daily" data-prompt="I'm feeling bored and hungry">
+                                <div class="dc-vector-icon"><i class="fa-solid fa-utensils"></i></div>
+                                <h4>I'm bored and hungry</h4>
+                                <p>Multi-aspect quick advice for food & study...</p>
+                                <span class="btn-discover">Discover <i class="fa-solid fa-arrow-right"></i></span>
+                            </div>
+
+                            <div class="prompt-chip discover-card" data-category="programming" data-prompt="Write a Python program for Fibonacci numbers">
+                                <div class="dc-vector-icon"><i class="fa-solid fa-code"></i></div>
+                                <h4>Python Fibonacci program</h4>
+                                <p>Code snippet and explanations...</p>
+                                <span class="btn-discover">Discover <i class="fa-solid fa-arrow-right"></i></span>
+                            </div>
+
+                            <div class="prompt-chip discover-card" data-category="study" data-prompt="Help me prepare for an interview">
+                                <div class="dc-vector-icon"><i class="fa-solid fa-briefcase"></i></div>
+                                <h4>Interview preparation</h4>
+                                <p>Actionable prep tips and practice...</p>
+                                <span class="btn-discover">Discover <i class="fa-solid fa-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FLOATING INPUT AREA AT BOTTOM -->
+            <div class="input-panel">
+                <!-- Status & Waveform Indicator Bar -->
+                <div class="status-indicator-bar" id="statusIndicatorBar">
+                    <span class="status-dot idle" id="statusDot"><i class="fa-solid fa-circle"></i></span>
+                    <span class="status-text" id="statusText">IDLE — Ready for voice or text</span>
+                    <div class="listening-waveform" id="listeningWaveform" style="display: none;">
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+
+                <!-- Input Controls Bar -->
+                <div class="chat-input-controls">
+                    <button id="micBtn" class="mic-btn-violet" title="Click to Speak (Web Speech API)">
+                        <i class="fa-solid fa-microphone"></i>
+                    </button>
+                    <input type="text" id="textInput" placeholder="Type a message..." autocomplete="off">
+                    <button id="sendBtn" class="send-btn-violet" title="Send Request">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- TECH ARCHITECTURE MODAL -->
+    <div id="techModal" class="tech-modal-overlay">
+        <div class="tech-modal-card">
+            <div class="tech-modal-header">
+                <h3><i class="fa-solid fa-network-wired"></i> VocaSense Architecture & Tech Stack</h3>
+                <button id="closeTechModalBtn" class="tech-modal-close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="tech-modal-body">
+                <div class="tech-card-item">
+                    <div class="t-icon-box"><i class="fa-solid fa-diagram-project"></i></div>
+                    <div>
+                        <h4>BiLSTM Intent Classifier</h4>
+                        <p>Keras Deep Learning neural network model (<code>intent_model.keras</code>) evaluating user queries in real-time to predict intent categories with confidence scores.</p>
+                    </div>
+                </div>
+                <div class="tech-card-item">
+                    <div class="t-icon-box"><i class="fa-solid fa-brain"></i></div>
+                    <div>
+                        <h4>Grok Generative AI Integration</h4>
+                        <p>Open-domain Large Language Model (<code>openai/gpt-oss-20b</code>) dynamically generating rich, structured answers based on user query and BiLSTM context.</p>
+                    </div>
+                </div>
+                <div class="tech-card-item">
+                    <div class="t-icon-box"><i class="fa-solid fa-microphone"></i></div>
+                    <div>
+                        <h4>Voice STT & Speech Synthesis</h4>
+                        <p>Native browser Web Speech API capturing microphone input and converting AI responses into speech audio output.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JS Files -->
+    <script src="{{ url_for('static', filename='js/speech.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

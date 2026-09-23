@@ -1,0 +1,8 @@
+{
+  "accuracy": 0.84375,
+  "precision": 0.8793898809523809,
+  "recall": 0.84375,
+  "f1_score": 0.8414517195767196,
+  "total_parameters": 114139,
+  "epochs_trained": 23
+}
