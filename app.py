@@ -358,13 +358,6 @@ def predict():
     detected_topics = extract_detected_topics(user_text)
     print(f"[4.1] [{request_id}] Detected Key Topics = {detected_topics}")
 
-    # Top 3 intents for visualization
-    top_indices = np.argsort(probs)[::-1][:3]
-    top_intents = [
-        {"intent": LABEL_CLASSES[i], "confidence": round(float(probs[i]), 4)}
-        for i in top_indices
-    ]
-    
     intent_meta = METADATA.get(predicted_tag, {})
     category = intent_meta.get("category", "General Inquiry")
 
