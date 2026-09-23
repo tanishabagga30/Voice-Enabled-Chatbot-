@@ -26,9 +26,11 @@ REQUEST_COUNTER = 0
 load_dotenv()
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
+static_dir = os.path.join(base_dir, "static") if os.path.exists(os.path.join(base_dir, "static")) else os.path.join(base_dir, "app", "static")
+
 app = Flask(__name__, 
             template_folder=os.path.join(base_dir, "app", "templates"),
-            static_folder=os.path.join(base_dir, "app", "static"))
+            static_folder=static_dir)
 CORS(app)
 
 # Grok / Groq API Configuration
